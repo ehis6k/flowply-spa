@@ -1,11 +1,13 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { OwnershipDiagram } from "@/components/sections/OwnershipDiagram";
-import { AntiPitchGrid } from "@/components/sections/AntiPitchGrid";
-import { UseCaseCategories } from "@/components/sections/UseCaseCategories";
-import { GovernanceControls } from "@/components/sections/GovernanceControls";
-import { VendorPartnerSection } from "@/components/sections/VendorPartnerSection";
+import { ProductPillars } from "@/components/sections/ProductPillars";
+import { SocialProof } from "@/components/sections/SocialProof";
+import { WhyFlowPly } from "@/components/sections/WhyFlowPly";
+import { UseCases } from "@/components/sections/UseCases";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Pricing } from "@/components/sections/Pricing";
+import { TrustSection } from "@/components/sections/TrustSection";
 import { CTASection } from "@/components/sections/CTASection";
 
 const Index = () => {
@@ -14,11 +16,13 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <OwnershipDiagram />
-        <AntiPitchGrid />
-        <UseCaseCategories />
-        <GovernanceControls />
-        <VendorPartnerSection />
+        <ProductPillars />
+        <SocialProof />
+        <WhyFlowPly />
+        <UseCases />
+        <HowItWorks />
+        <Pricing />
+        <TrustSection />
         <CTASection />
       </main>
       <Footer />
