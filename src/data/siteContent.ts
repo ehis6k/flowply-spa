@@ -29,8 +29,8 @@ export const navItems: NavItem[] = [
     href: "/scope",
     children: [
       { label: "Managed Operations", href: "/scope#managed-operations", description: "Monitoring, alerting & incident response" },
-      { label: "AI Orchestration", href: "/controls#ai-orchestration", description: "HITL, guardrails & audit trails" },
-      { label: "Integrations & Workflows", href: "/vendors#integrations", description: "API connections & data routing" },
+      { label: "AI Orchestration", href: "/scope#ai-orchestration", description: "HITL, guardrails & audit trails" },
+      { label: "Integrations & Workflows", href: "/scope#integrations", description: "API connections & data routing" },
       { label: "Use cases", href: "/scope#use-cases", description: "Support, sales, backoffice & more" },
     ]
   },
@@ -39,8 +39,8 @@ export const navItems: NavItem[] = [
     href: "/controls",
     children: [
       { label: "Monitoring", href: "/controls#monitoring", description: "Real-time visibility & alerting" },
-      { label: "Escalations", href: "/controls#ai-orchestration", description: "Tiered response paths" },
-      { label: "HITL", href: "/controls#ai-orchestration", description: "Human approval gates" },
+      { label: "Escalations", href: "/controls#escalations", description: "Tiered response paths" },
+      { label: "HITL", href: "/controls#hitl", description: "Human approval gates" },
       { label: "Audit trails", href: "/controls#audit-compliance", description: "Complete change history" },
       { label: "Security", href: "/controls#security", description: "Enterprise-grade controls" },
     ]
@@ -253,7 +253,7 @@ export const serviceCards: ServiceCard[] = [
       "HITL (human-in-the-loop)",
       "Guardrails & audit trails",
     ],
-    destinationLink: "/controls#ai-orchestration",
+    destinationLink: "/scope#ai-orchestration",
     slug: "ai-orchestration",
   },
   {
@@ -264,8 +264,8 @@ export const serviceCards: ServiceCard[] = [
       "Data sync & routing",
       "Automation reliability",
     ],
-    destinationLink: "/vendors#integrations",
-    slug: "integrations-workflows",
+    destinationLink: "/scope#integrations",
+    slug: "integrations",
   },
 ];
 
