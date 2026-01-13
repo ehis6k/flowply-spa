@@ -6,7 +6,6 @@ import { SocialProof } from "@/components/sections/SocialProof";
 import { WhyFlowPly } from "@/components/sections/WhyFlowPly";
 import { UseCases } from "@/components/sections/UseCases";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Pricing } from "@/components/sections/Pricing";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { VendorLogos } from "@/components/shared/VendorLogos";
@@ -26,7 +25,6 @@ const Index = () => {
         <UseCases />
         <ControlsCarousel />
         <HowItWorks />
-        <Pricing />
         <Testimonials />
         <TrustSection />
         <CTASection />
