@@ -1,6 +1,18 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, type Easing } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const arrowVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+const easeOut: Easing = "easeOut";
 
 export function HeroSection() {
   return (
@@ -47,54 +59,100 @@ export function HeroSection() {
           </motion.div>
 
           {/* Hero Diagram */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-0">
-              {/* SaaS Platform */}
-              <div className="flex-1 max-w-[200px]">
-                <div className="bg-secondary rounded-xl p-4 border border-border text-center">
-                  <span className="text-sm font-medium text-foreground">SaaS Platform</span>
-                  <p className="text-xs text-muted-foreground mt-1">Your AI tools</p>
-                </div>
-              </div>
-              
-              {/* Arrow */}
-              <div className="hidden md:flex items-center px-2">
-                <div className="h-px w-8 bg-border" />
-                <ArrowRight className="h-4 w-4 text-muted-foreground" />
-              </div>
-              <div className="md:hidden h-6 w-px bg-border" />
-              
-              {/* Customer Process */}
-              <div className="flex-1 max-w-[200px]">
-                <div className="bg-secondary rounded-xl p-4 border border-border text-center">
-                  <span className="text-sm font-medium text-foreground">Customer Process</span>
-                  <p className="text-xs text-muted-foreground mt-1">Your workflows</p>
-                </div>
-              </div>
-              
-              {/* Arrow */}
-              <div className="hidden md:flex items-center px-2">
-                <div className="h-px w-8 bg-border" />
-                <ArrowRight className="h-4 w-4 text-muted-foreground" />
-              </div>
-              <div className="md:hidden h-6 w-px bg-border" />
-              
-              {/* FlowPly Ops Layer */}
-              <div className="flex-1 max-w-[220px]">
-                <div className="bg-accent/10 rounded-xl p-4 border-2 border-accent text-center shadow-[0_0_30px_hsl(var(--amber)/0.2)]">
-                  <span className="text-sm font-bold text-accent">FlowPly Ops Layer</span>
-                  <p className="text-xs text-muted-foreground mt-1">Monitoring • Escalation • Optimization</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <HeroDiagram />
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroDiagram() {
+  const shouldReduceMotion = useReducedMotion();
+  
+  const getCardTransition = (delay: number) => 
+    shouldReduceMotion 
+      ? { duration: 0 } 
+      : { duration: 0.4, delay, ease: easeOut };
+  
+  const getArrowTransition = (delay: number) => 
+    shouldReduceMotion 
+      ? { duration: 0 } 
+      : { duration: 0.25, delay: delay + 0.15, ease: easeOut };
+
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="max-w-3xl mx-auto"
+    >
+      <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-0">
+        {/* SaaS Platform */}
+        <motion.div
+          variants={cardVariants}
+          transition={getCardTransition(0)}
+          className="flex-1 max-w-[200px]"
+        >
+          <div className="bg-secondary rounded-xl p-4 border border-border text-center">
+            <span className="text-sm font-medium text-foreground">SaaS Platform</span>
+            <p className="text-xs text-muted-foreground mt-1">Your AI tools</p>
+          </div>
+        </motion.div>
+        
+        {/* Arrow 1 */}
+        <motion.div 
+          variants={arrowVariants}
+          transition={getArrowTransition(0)}
+          className="hidden md:flex items-center px-2"
+        >
+          <div className="h-px w-8 bg-border" />
+          <ArrowRight className="h-4 w-4 text-muted-foreground" />
+        </motion.div>
+        <motion.div 
+          variants={arrowVariants}
+          transition={getArrowTransition(0)}
+          className="md:hidden h-6 w-px bg-border" 
+        />
+        
+        {/* Customer Process */}
+        <motion.div
+          variants={cardVariants}
+          transition={getCardTransition(0.3)}
+          className="flex-1 max-w-[200px]"
+        >
+          <div className="bg-secondary rounded-xl p-4 border border-border text-center">
+            <span className="text-sm font-medium text-foreground">Customer Process</span>
+            <p className="text-xs text-muted-foreground mt-1">Your workflows</p>
+          </div>
+        </motion.div>
+        
+        {/* Arrow 2 */}
+        <motion.div 
+          variants={arrowVariants}
+          transition={getArrowTransition(0.3)}
+          className="hidden md:flex items-center px-2"
+        >
+          <div className="h-px w-8 bg-border" />
+          <ArrowRight className="h-4 w-4 text-muted-foreground" />
+        </motion.div>
+        <motion.div 
+          variants={arrowVariants}
+          transition={getArrowTransition(0.3)}
+          className="md:hidden h-6 w-px bg-border" 
+        />
+        
+        {/* FlowPly Ops Layer */}
+        <motion.div
+          variants={cardVariants}
+          transition={getCardTransition(0.6)}
+          className="flex-1 max-w-[220px]"
+        >
+          <div className="bg-accent/10 rounded-xl p-4 border-2 border-accent text-center shadow-[0_0_30px_hsl(var(--amber)/0.2)]">
+            <span className="text-sm font-bold text-accent">FlowPly Ops Layer</span>
+            <p className="text-xs text-muted-foreground mt-1">Monitoring • Escalation • Optimization</p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }
