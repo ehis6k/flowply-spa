@@ -82,8 +82,7 @@ function HeroDiagram() {
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      animate="visible"
       className="max-w-3xl mx-auto"
     >
       <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-0">
