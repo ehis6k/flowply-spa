@@ -34,7 +34,7 @@ const Controls = () => {
         </section>
 
         {/* Monitoring & Alerting */}
-        <section className="py-24 bg-muted/30">
+        <section id="monitoring" className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <SectionHeader 
               title={controlsContent.monitoring.title}
@@ -108,7 +108,7 @@ const Controls = () => {
         </section>
 
         {/* Audit & Compliance */}
-        <section className="py-24 bg-muted/30">
+        <section id="audit-compliance" className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <SectionHeader 
               title={controlsContent.auditTrails.title}
@@ -145,7 +145,7 @@ const Controls = () => {
         </section>
 
         {/* Enterprise Trust */}
-        <section className="py-24 bg-background">
+        <section id="security" className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <SectionHeader 
               title="Enterprise-grade trust"
