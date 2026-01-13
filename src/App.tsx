@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 import Model from "./pages/Model";
 import Scope from "./pages/Scope";
 import Controls from "./pages/Controls";
-import Vendors from "./pages/Vendors";
+import Stack from "./pages/Stack";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -28,7 +28,7 @@ const App = () => (
           <Route path="/model" element={<Model />} />
           <Route path="/scope" element={<Scope />} />
           <Route path="/controls" element={<Controls />} />
-          <Route path="/vendors" element={<Vendors />} />
+          <Route path="/stack" element={<Stack />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

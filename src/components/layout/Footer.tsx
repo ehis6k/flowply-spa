@@ -6,7 +6,7 @@ const footerLinks = {
     { label: "How It Works", href: "/model" },
     { label: "Scope of Services", href: "/scope" },
     { label: "Controls & Reliability", href: "/controls" },
-    { label: "Vendor Integrations", href: "/vendors" },
+    { label: "Your Stack", href: "/stack" },
   ],
   services: [
     { label: "Managed Operations", href: "/scope#managed-operations" },
