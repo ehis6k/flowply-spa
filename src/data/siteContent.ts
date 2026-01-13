@@ -7,19 +7,53 @@ import {
 } from "lucide-react";
 
 // ============================================
-// NAVIGATION
+// NAVIGATION WITH MEGA MENU STRUCTURE
 // ============================================
+export interface NavSubItem {
+  label: string;
+  href: string;
+  description?: string;
+}
+
 export interface NavItem {
   label: string;
   href: string;
   anchor?: string;
+  children?: NavSubItem[];
 }
 
 export const navItems: NavItem[] = [
   { label: "Model", href: "/model" },
-  { label: "Scope", href: "/scope" },
-  { label: "Controls", href: "/controls" },
-  { label: "Vendors", href: "/vendors" },
+  { 
+    label: "Scope", 
+    href: "/scope",
+    children: [
+      { label: "Managed Operations", href: "/scope#managed-operations", description: "Monitoring, alerting & incident response" },
+      { label: "AI Orchestration", href: "/controls#ai-orchestration", description: "HITL, guardrails & audit trails" },
+      { label: "Integrations & Workflows", href: "/vendors#integrations", description: "API connections & data routing" },
+      { label: "Use cases", href: "/scope#use-cases", description: "Support, sales, backoffice & more" },
+    ]
+  },
+  { 
+    label: "Controls", 
+    href: "/controls",
+    children: [
+      { label: "Monitoring", href: "/controls", description: "Real-time visibility & alerting" },
+      { label: "Escalations", href: "/controls#ai-orchestration", description: "Tiered response paths" },
+      { label: "HITL", href: "/controls#ai-orchestration", description: "Human approval gates" },
+      { label: "Audit trails", href: "/controls", description: "Complete change history" },
+      { label: "Security", href: "/controls", description: "Enterprise-grade controls" },
+    ]
+  },
+  { 
+    label: "Vendors", 
+    href: "/vendors",
+    children: [
+      { label: "Integrations", href: "/vendors#integrations", description: "API, sync & reliability" },
+      { label: "Supported categories", href: "/vendors", description: "AI, automation, CRM & more" },
+      { label: "Onboarding checklist", href: "/vendors", description: "How we bring vendors live" },
+    ]
+  },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -48,6 +82,11 @@ export const heroContent = {
   headline: "We run your automations",
   headlineAccent: "in production.",
   subheadline: "FlowPly manages, monitors and improves your deployed AI & workflow systems — with SLAs, human escalation and measurable outcomes.",
+  latestUpdate: {
+    label: "New",
+    text: "SOC2 Type II certification achieved",
+    href: "/controls",
+  },
   diagram: {
     items: [
       { title: "SaaS Platform", subtitle: "Your AI tools" },
@@ -93,45 +132,61 @@ export const howItWorksSteps: Step[] = [
 ];
 
 // ============================================
-// USE CASES
+// USE CASES WITH TAGS FOR FILTERING
 // ============================================
+export type UseCaseTag = "support" | "sales" | "backoffice" | "data" | "voice";
+
 export interface UseCase {
   icon: LucideIcon;
   title: string;
   slug: string;
   description: string;
+  tags: UseCaseTag[];
 }
+
+export const useCaseTags: { value: UseCaseTag; label: string }[] = [
+  { value: "support", label: "Support" },
+  { value: "sales", label: "Sales" },
+  { value: "backoffice", label: "Backoffice" },
+  { value: "data", label: "Data" },
+  { value: "voice", label: "Voice" },
+];
 
 export const useCases: UseCase[] = [
   { 
     icon: Headphones, 
     title: "Customer support automation",
     slug: "customer-support",
-    description: "Automated ticket routing, response generation, and escalation for support teams."
+    description: "Automated ticket routing, response generation, and escalation for support teams.",
+    tags: ["support", "voice"],
   },
   { 
     icon: Users, 
     title: "Sales & intake automation",
     slug: "sales-intake",
-    description: "Lead qualification, CRM sync, and automated follow-up sequences."
+    description: "Lead qualification, CRM sync, and automated follow-up sequences.",
+    tags: ["sales", "data"],
   },
   { 
     icon: FileText, 
     title: "Claims / backoffice workflows",
     slug: "claims-backoffice",
-    description: "Document processing, approval workflows, and status tracking automation."
+    description: "Document processing, approval workflows, and status tracking automation.",
+    tags: ["backoffice", "data"],
   },
   { 
     icon: Database, 
     title: "Data enrichment & routing",
     slug: "data-enrichment",
-    description: "Real-time data validation, enrichment from multiple sources, and intelligent routing."
+    description: "Real-time data validation, enrichment from multiple sources, and intelligent routing.",
+    tags: ["data"],
   },
   { 
     icon: MessageSquare, 
     title: "Voice/Chat agent operations",
     slug: "voice-chat-agents",
-    description: "Conversational AI monitoring, quality assurance, and continuous improvement."
+    description: "Conversational AI monitoring, quality assurance, and continuous improvement.",
+    tags: ["voice", "support"],
   },
 ];
 
@@ -219,13 +274,16 @@ export const serviceCards: ServiceCard[] = [
 // ============================================
 export interface TrustMetric {
   value: string;
+  numericValue?: number;
+  suffix?: string;
+  prefix?: string;
   label: string;
 }
 
 export const trustMetrics: TrustMetric[] = [
-  { value: "99.9%", label: "Uptime" },
+  { value: "99.9%", numericValue: 99.9, suffix: "%", label: "Uptime" },
   { value: "24/7", label: "Operations" },
-  { value: "<15min", label: "Response" },
+  { value: "<15min", numericValue: 15, prefix: "<", suffix: "min", label: "Response" },
   { value: "SOC2", label: "Compliant" },
 ];
 
@@ -543,6 +601,11 @@ export const contactContent = {
   confirmation: {
     title: "Assessment requested",
     message: "We typically respond within 24 hours. Check your email for next steps.",
+  },
+  fallback: {
+    title: "Having trouble?",
+    message: "Email us directly at",
+    email: "hello@flowply.io",
   },
   formFields: {
     name: { label: "Name", placeholder: "Your name" },
