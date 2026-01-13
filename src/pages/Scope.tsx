@@ -136,7 +136,7 @@ const Scope = () => {
                     "Incident detection and response",
                     "Change management with approval workflows",
                     "SLA tracking and uptime guarantees",
-                    "Performance optimization recommendations",
+                    "Performance monitoring and reporting",
                     "Monthly reporting and reviews"
                   ].map((item, index) => (
                     <motion.div
@@ -243,7 +243,7 @@ const Scope = () => {
                     "Retry logic and error handling",
                     "Rate limiting and queue management",
                     "Integration health monitoring",
-                    "Workflow optimization"
+                    "Workflow reliability monitoring"
                   ].map((item, index) => (
                     <motion.div
                       key={item}

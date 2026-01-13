@@ -81,17 +81,17 @@ export const globalCTAs = {
 export const heroContent = {
   headline: "We run your automations",
   headlineAccent: "in production.",
-  subheadline: "FlowPly manages, monitors and improves your deployed AI & workflow systems — with SLAs, human escalation and measurable outcomes.",
+  subheadline: "FlowPly manages and monitors your deployed AI & workflow systems — with SLAs, human escalation and full operational oversight.",
   latestUpdate: {
     label: "New",
-    text: "SOC2 Type II certification achieved",
-    href: "/controls",
+    text: "Now accepting new managed operations clients",
+    href: "/contact",
   },
   diagram: {
     items: [
       { title: "SaaS Platform", subtitle: "Your AI tools" },
       { title: "Customer Process", subtitle: "Your workflows" },
-      { title: "FlowPly Ops Layer", subtitle: "Monitoring • Escalation • Optimization", isHighlighted: true },
+      { title: "FlowPly Ops Layer", subtitle: "Monitoring • Escalation • Reporting", isHighlighted: true },
     ],
   },
 };
@@ -123,11 +123,11 @@ export const howItWorksSteps: Step[] = [
     description: "Guardrails, monitoring, and incident response protocols get implemented.",
   },
   {
-    icon: TrendingUp,
+    icon: BarChart3,
     number: "03",
-    title: "Run & optimize",
+    title: "Run & report",
     duration: "Ongoing",
-    description: "Monthly ops, continuous improvements, and measurable performance gains.",
+    description: "Ongoing operations, proactive monitoring, and detailed performance reporting.",
   },
 ];
 
@@ -185,7 +185,7 @@ export const useCases: UseCase[] = [
     icon: MessageSquare, 
     title: "Voice/Chat agent operations",
     slug: "voice-chat-agents",
-    description: "Conversational AI monitoring, quality assurance, and continuous improvement.",
+    description: "Conversational AI monitoring, quality assurance, and escalation management.",
     tags: ["voice", "support"],
   },
 ];
@@ -207,8 +207,8 @@ export const benefits: Benefit[] = [
   },
   {
     icon: Zap,
-    title: "Faster deployments",
-    description: "Streamlined change management accelerates your release cycles.",
+    title: "Reliable operations",
+    description: "Managed change processes with rollback procedures and impact assessment.",
   },
   {
     icon: BarChart3,
@@ -284,7 +284,7 @@ export const trustMetrics: TrustMetric[] = [
   { value: "99.9%", numericValue: 99.9, suffix: "%", label: "Uptime" },
   { value: "24/7", label: "Operations" },
   { value: "<15min", numericValue: 15, prefix: "<", suffix: "min", label: "Response" },
-  { value: "SOC2", label: "Compliant" },
+  { value: "100%", numericValue: 100, suffix: "%", label: "Audit Trail" },
 ];
 
 // ============================================
@@ -437,7 +437,7 @@ export const controlsContent = {
         icon: Shield,
         title: "Compliance reporting",
         description: "Automated compliance reporting and evidence collection.",
-        details: ["SOC2 evidence", "GDPR documentation", "Custom frameworks"],
+        details: ["GDPR documentation", "Custom compliance frameworks", "Exportable reports"],
       },
     ] as ControlItem[],
   },
@@ -533,7 +533,7 @@ export const scopeContent = {
       "Monitoring and alerting for all configured automations",
       "Incident response and escalation",
       "Change management and deployment",
-      "Performance optimization and tuning",
+      "Performance monitoring and reporting",
       "Integration maintenance and updates",
       "SLA tracking and reporting",
       "Human-in-the-loop workflows",
@@ -569,7 +569,7 @@ export const modelContent = {
         "Operational monitoring 24/7",
         "Incident detection and response",
         "Change deployment and rollback",
-        "Performance optimization",
+        "Performance monitoring",
         "Integration health checks",
         "Escalation management",
         "Audit trail maintenance",
@@ -653,11 +653,11 @@ export const footerContent = {
 export const pageMeta = {
   home: {
     title: "FlowPly | Managed Operations for AI SaaS",
-    description: "FlowPly manages, monitors and improves your deployed AI & workflow systems with SLAs, human escalation and measurable outcomes.",
+    description: "FlowPly manages and monitors your deployed AI & workflow systems with SLAs, human escalation and full operational oversight.",
   },
   model: {
     title: "The FlowPly Model | How Our Ops Layer Works",
-    description: "Understand the operational model: who owns what, how we work together, and the 3-step process from assessment to ongoing optimization.",
+    description: "Understand the operational model: who owns what, how we work together, and the 3-step process from assessment to ongoing operations.",
   },
   scope: {
     title: "Scope of Services | What FlowPly Manages",

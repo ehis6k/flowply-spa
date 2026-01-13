@@ -5,7 +5,7 @@ const metrics = [
   { value: 99.9, suffix: "%", label: "Uptime", decimals: 1 },
   { value: 24, suffix: "/7", label: "Operations", decimals: 0 },
   { prefix: "<", value: 15, suffix: "min", label: "Response", decimals: 0 },
-  { value: 0, label: "SOC2", displayValue: "SOC2", decimals: 0 },
+  { value: 100, suffix: "%", label: "Audit Trail", decimals: 0 },
 ];
 
 export function SocialProof() {
@@ -34,17 +34,13 @@ export function SocialProof() {
                 className="text-center group"
               >
                 <div className="text-3xl md:text-4xl font-bold text-foreground transition-colors group-hover:text-accent">
-                  {metric.displayValue ? (
-                    <span>{metric.displayValue}</span>
-                  ) : (
-                    <AnimatedCounter 
-                      value={metric.value} 
-                      prefix={metric.prefix}
-                      suffix={metric.suffix} 
-                      decimals={metric.decimals}
-                      duration={2000}
-                    />
-                  )}
+                  <AnimatedCounter 
+                    value={metric.value} 
+                    prefix={metric.prefix}
+                    suffix={metric.suffix} 
+                    decimals={metric.decimals}
+                    duration={2000}
+                  />
                 </div>
                 <div className="text-sm text-muted-foreground mt-1">
                   {metric.label}

@@ -148,7 +148,7 @@ export function Footer() {
             Built for teams that run mission-critical AI automations
           </p>
           <div className="flex items-center gap-6 text-xs text-primary-foreground/50">
-            <span>SOC 2 Type II Compliant</span>
+            <span>GDPR Compliant</span>
             <span>•</span>
             <span>99.9% Uptime SLA</span>
             <span>•</span>
