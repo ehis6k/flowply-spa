@@ -49,7 +49,7 @@ const Privacy = () => {
               <p className="text-muted-foreground">
                 We implement appropriate technical and organizational measures to protect your personal 
                 information against unauthorized access, alteration, disclosure, or destruction. This includes 
-                encryption in transit and at rest, regular security audits, and SOC 2 Type II compliance.
+                encryption in transit and at rest, regular security audits, and access control policies.
               </p>
             </section>
 

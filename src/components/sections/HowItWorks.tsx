@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ClipboardCheck, Shield, TrendingUp } from "lucide-react";
+import { ClipboardCheck, Shield, BarChart3 } from "lucide-react";
 
 const steps = [
   {
@@ -17,11 +17,11 @@ const steps = [
     description: "Guardrails, monitoring, and incident response protocols get implemented.",
   },
   {
-    icon: TrendingUp,
+    icon: BarChart3,
     number: "03",
-    title: "Run & optimize",
+    title: "Run & report",
     duration: "Ongoing",
-    description: "Monthly ops, continuous improvements, and measurable performance gains.",
+    description: "Ongoing operations, proactive monitoring, and detailed performance reporting.",
   },
 ];
 

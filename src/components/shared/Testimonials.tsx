@@ -3,21 +3,21 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "FlowPly reduced our incident response time by 80%. Their ops team handles everything while we focus on building.",
+    quote: "FlowPly reduced our incident response time by 80%. Their ops team handles everything while we focus on our product.",
     author: "Sarah Chen",
     role: "CTO",
     company: "TechScale",
     avatar: "SC",
   },
   {
-    quote: "We went from chaos to calm. Now our automations just work, and when they don't, FlowPly fixes them before we notice.",
+    quote: "We went from chaos to calm. Our automations run reliably, and FlowPly catches issues before they impact customers.",
     author: "Marcus Johnson",
     role: "Head of Operations",
     company: "DataFlow Inc",
     avatar: "MJ",
   },
   {
-    quote: "The human-in-the-loop features give us the confidence to automate processes we never thought possible.",
+    quote: "The human-in-the-loop controls give us confidence that critical decisions always have proper oversight.",
     author: "Emily Rodriguez",
     role: "VP Engineering",
     company: "Automata Labs",
