@@ -28,27 +28,6 @@ export function HeroSection() {
     <section className="relative pt-32 lg:pt-40 pb-20 lg:pb-24 overflow-hidden bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Latest Update Pill */}
-          {heroContent.latestUpdate && (
-            <motion.div
-              initial={shouldReduceMotion ? {} : { opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={getTransition(0)}
-              className="mb-8"
-            >
-              <Link
-                to={heroContent.latestUpdate.href}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-sm hover:bg-accent/15 transition-colors group"
-              >
-                <span className="flex items-center gap-1.5 text-accent font-medium">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  {heroContent.latestUpdate.label}
-                </span>
-                <span className="text-muted-foreground">{heroContent.latestUpdate.text}</span>
-                <ArrowRight className="h-3.5 w-3.5 text-muted-foreground group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </motion.div>
-          )}
 
           {/* Headline */}
           <motion.h1
