@@ -38,11 +38,11 @@ export const navItems: NavItem[] = [
     label: "Controls", 
     href: "/controls",
     children: [
-      { label: "Monitoring", href: "/controls", description: "Real-time visibility & alerting" },
+      { label: "Monitoring", href: "/controls#monitoring", description: "Real-time visibility & alerting" },
       { label: "Escalations", href: "/controls#ai-orchestration", description: "Tiered response paths" },
       { label: "HITL", href: "/controls#ai-orchestration", description: "Human approval gates" },
-      { label: "Audit trails", href: "/controls", description: "Complete change history" },
-      { label: "Security", href: "/controls", description: "Enterprise-grade controls" },
+      { label: "Audit trails", href: "/controls#audit-compliance", description: "Complete change history" },
+      { label: "Security", href: "/controls#security", description: "Enterprise-grade controls" },
     ]
   },
   { 
@@ -50,8 +50,8 @@ export const navItems: NavItem[] = [
     href: "/vendors",
     children: [
       { label: "Integrations", href: "/vendors#integrations", description: "API, sync & reliability" },
-      { label: "Supported categories", href: "/vendors", description: "AI, automation, CRM & more" },
-      { label: "Onboarding checklist", href: "/vendors", description: "How we bring vendors live" },
+      { label: "Supported categories", href: "/vendors#supported-tooling", description: "AI, automation, CRM & more" },
+      { label: "Onboarding checklist", href: "/vendors#onboarding", description: "How we bring vendors live" },
     ]
   },
   { label: "Contact", href: "/contact" },

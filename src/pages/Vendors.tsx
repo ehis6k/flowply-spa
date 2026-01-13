@@ -72,7 +72,7 @@ const Vendors = () => {
         </section>
 
         {/* Supported Tooling */}
-        <section className="py-24 bg-background">
+        <section id="supported-tooling" className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <SectionHeader 
               title={vendorsContent.supportedTooling.title}
@@ -107,7 +107,7 @@ const Vendors = () => {
         </section>
 
         {/* Onboarding Checklist */}
-        <section className="py-24 bg-muted/30">
+        <section id="onboarding" className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <SectionHeader 
               title={vendorsContent.onboardingChecklist.title}
