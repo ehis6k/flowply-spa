@@ -9,7 +9,6 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { VendorLogos } from "@/components/shared/VendorLogos";
-import { Testimonials } from "@/components/shared/Testimonials";
 import { ControlsCarousel } from "@/components/shared/ControlsCarousel";
 
 const Index = () => {
@@ -25,7 +24,6 @@ const Index = () => {
         <UseCases />
         <ControlsCarousel />
         <HowItWorks />
-        <Testimonials />
         <TrustSection />
         <CTASection />
       </main>
