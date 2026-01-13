@@ -65,8 +65,8 @@ export function Header() {
               />
             </Link>
 
-            {/* Desktop Navigation with Mega Menu */}
-            <nav className="hidden lg:flex items-center gap-1">
+            {/* Desktop Navigation with Mega Menu - visible on md and up */}
+            <nav className="hidden md:flex items-center gap-1">
               {navItems.map((item) => (
                 <div
                   key={item.label}
@@ -101,7 +101,7 @@ export function Header() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 pt-2 min-w-[280px]"
+                        className="absolute top-full left-0 pt-2 min-w-[280px] z-50"
                         onMouseEnter={() => handleMouseEnter(item.label)}
                         onMouseLeave={handleMouseLeave}
                       >
@@ -135,7 +135,7 @@ export function Header() {
             </nav>
 
             {/* CTA Button - Desktop */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-4">
               <Button 
                 asChild 
                 variant="accent" 
@@ -148,9 +148,9 @@ export function Header() {
               </Button>
             </div>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle - only on phone/tablet */}
             <button
-              className="lg:hidden p-2 rounded-lg hover:bg-secondary/50 transition-colors"
+              className="md:hidden p-2 rounded-lg hover:bg-secondary/50 transition-colors"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Open menu"
             >
