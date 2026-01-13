@@ -6,6 +6,7 @@ import { heroContent, globalCTAs } from "@/data/siteContent";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { FloatingOrbs } from "@/components/shared/FloatingOrbs";
 import { FlowLines } from "@/components/shared/FlowLines";
+import heroTeamImage from "@/assets/hero-team.png";
 
 const easeOut: Easing = "easeOut";
 
@@ -34,65 +35,92 @@ export function HeroSection() {
       {/* Flow lines animation */}
       <FlowLines />
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Text content */}
+          <div className="text-center lg:text-left">
+            {/* Headline */}
+            <motion.h1
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={getTransition(0.1)}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6"
+            >
+              {heroContent.headline}{" "}
+              <span className="text-gradient-accent">{heroContent.headlineAccent}</span>
+            </motion.h1>
 
-          {/* Headline */}
-          <motion.h1
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={getTransition(0.1)}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground mb-6"
-          >
-            {heroContent.headline}{" "}
-            <span className="text-gradient-accent">{heroContent.headlineAccent}</span>
-          </motion.h1>
+            {/* Subheadline */}
+            <motion.p
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={getTransition(0.2)}
+              className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-10"
+            >
+              {heroContent.subheadline}
+            </motion.p>
 
-          {/* Subheadline */}
-          <motion.p
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={getTransition(0.2)}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10"
-          >
-            {heroContent.subheadline}
-          </motion.p>
+            {/* CTAs */}
+            <motion.div
+              initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={getTransition(0.3)}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12 lg:mb-0"
+            >
+              <Button 
+                asChild
+                variant="hero-accent" 
+                size="lg" 
+                className="w-full sm:w-auto group"
+                onClick={() => trackCTAPrimary("hero")}
+              >
+                <Link to={globalCTAs.primary.href}>
+                  {globalCTAs.primary.label}
+                  <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button 
+                asChild
+                variant="hero-outline" 
+                size="lg" 
+                className="w-full sm:w-auto group"
+                onClick={() => trackCTASecondary("hero")}
+              >
+                <Link to={globalCTAs.secondary.href}>
+                  <Play className="h-4 w-4 mr-2" />
+                  {globalCTAs.secondary.label}
+                </Link>
+              </Button>
+            </motion.div>
+          </div>
 
-          {/* CTAs */}
+          {/* Right: Hero Image */}
           <motion.div
-            initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={getTransition(0.3)}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            initial={shouldReduceMotion ? {} : { opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={getTransition(0.4)}
+            className="relative hidden lg:block"
           >
-            <Button 
-              asChild
-              variant="hero-accent" 
-              size="lg" 
-              className="w-full sm:w-auto group"
-              onClick={() => trackCTAPrimary("hero")}
-            >
-              <Link to={globalCTAs.primary.href}>
-                {globalCTAs.primary.label}
-                <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-            <Button 
-              asChild
-              variant="hero-outline" 
-              size="lg" 
-              className="w-full sm:w-auto group"
-              onClick={() => trackCTASecondary("hero")}
-            >
-              <Link to={globalCTAs.secondary.href}>
-                <Play className="h-4 w-4 mr-2" />
-                {globalCTAs.secondary.label}
-              </Link>
-            </Button>
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src={heroTeamImage} 
+                alt="Team werkt samen aan data analytics dashboards"
+                className="w-full h-auto object-cover opacity-90"
+              />
+              {/* Subtle overlay for brand cohesion */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-background/15 via-transparent to-accent/10 pointer-events-none" />
+            </div>
           </motion.div>
-
-          {/* Hero Diagram */}
-          <HeroDiagram />
         </div>
+
+        {/* Hero Diagram - below on desktop, after CTAs on mobile */}
+        <motion.div
+          initial={shouldReduceMotion ? {} : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={getTransition(0.5)}
+          className="mt-16"
+        >
+          <HeroDiagram />
+        </motion.div>
       </div>
     </section>
   );
