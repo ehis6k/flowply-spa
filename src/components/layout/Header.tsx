@@ -67,71 +67,91 @@ export function Header() {
 
             {/* Desktop Navigation with Mega Menu - visible on md and up */}
             <nav className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => (
-                <div
-                  key={item.label}
-                  className="relative"
-                  onMouseEnter={() => item.children && handleMouseEnter(item.label)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Link
-                    to={item.href}
-                    onClick={() => trackNavClick(item.label, item.href)}
-                    className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
-                      location.pathname === item.href 
-                        ? "text-foreground bg-secondary/50" 
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
-                    }`}
-                  >
-                    {item.label}
-                    {item.children && (
-                      <ChevronDown 
-                        className={`h-4 w-4 transition-transform duration-200 ${
-                          openDropdown === item.label ? "rotate-180" : ""
-                        }`} 
-                      />
-                    )}
-                  </Link>
+              {navItems.map((item) => {
+                const fullPath = `${location.pathname}${location.hash || ""}`;
+                const isParentActive =
+                  location.pathname === item.href ||
+                  (item.children?.some((c) => c.href === fullPath) ?? false);
 
-                  {/* Dropdown Menu */}
-                  <AnimatePresence>
-                    {item.children && openDropdown === item.label && (
-                      <motion.div
-                        initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 pt-2 min-w-[280px] z-50"
-                        onMouseEnter={() => handleMouseEnter(item.label)}
-                        onMouseLeave={handleMouseLeave}
-                      >
-                        <div className="bg-card rounded-xl border border-border shadow-lg p-2">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.label}
-                              to={child.href}
-                              onClick={() => {
-                                trackNavClick(child.label, child.href);
-                                setOpenDropdown(null);
-                              }}
-                              className="block px-4 py-3 rounded-lg hover:bg-secondary/50 transition-colors group"
-                            >
-                              <span className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
-                                {child.label}
-                              </span>
-                              {child.description && (
-                                <span className="block text-xs text-muted-foreground mt-0.5">
-                                  {child.description}
-                                </span>
-                              )}
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                return (
+                  <div
+                    key={item.label}
+                    className="relative"
+                    onMouseEnter={() => item.children && handleMouseEnter(item.label)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Link
+                      to={item.href}
+                      onClick={() => trackNavClick(item.label, item.href)}
+                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
+                        isParentActive
+                          ? "text-foreground bg-secondary/50"
+                          : "text-muted-foreground hover:text-foreground hover:bg-secondary/30"
+                      }`}
+                    >
+                      {item.label}
+                      {item.children && (
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            openDropdown === item.label ? "rotate-180" : ""
+                          }`}
+                        />
+                      )}
+                    </Link>
+
+                    {/* Dropdown Menu */}
+                    <AnimatePresence>
+                      {item.children && openDropdown === item.label && (
+                        <motion.div
+                          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute top-full left-0 pt-2 min-w-[280px] z-50"
+                          onMouseEnter={() => handleMouseEnter(item.label)}
+                          onMouseLeave={handleMouseLeave}
+                        >
+                          <div className="bg-card rounded-xl border border-border shadow-lg p-2">
+                            {item.children.map((child) => {
+                              const isChildActive = child.href === fullPath;
+                              return (
+                                <Link
+                                  key={child.label}
+                                  to={child.href}
+                                  onClick={() => {
+                                    trackNavClick(child.label, child.href);
+                                    setOpenDropdown(null);
+                                  }}
+                                  className={`block px-4 py-3 rounded-lg transition-colors group ${
+                                    isChildActive
+                                      ? "bg-secondary/50"
+                                      : "hover:bg-secondary/50"
+                                  }`}
+                                >
+                                  <span
+                                    className={`text-sm font-medium transition-colors ${
+                                      isChildActive
+                                        ? "text-foreground"
+                                        : "text-foreground group-hover:text-accent"
+                                    }`}
+                                  >
+                                    {child.label}
+                                  </span>
+                                  {child.description && (
+                                    <span className="block text-xs text-muted-foreground mt-0.5">
+                                      {child.description}
+                                    </span>
+                                  )}
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </nav>
 
             {/* CTA Button - Desktop */}
