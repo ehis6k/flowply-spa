@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ScrollToHash } from "@/components/shared/ScrollToHash";
 import Index from "./pages/Index";
 import Model from "./pages/Model";
@@ -29,6 +29,7 @@ const App = () => (
           <Route path="/scope" element={<Scope />} />
           <Route path="/controls" element={<Controls />} />
           <Route path="/stack" element={<Stack />} />
+          <Route path="/vendors" element={<Navigate to="/stack" replace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
