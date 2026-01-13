@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { CTABand } from "@/components/shared/CTABand";
 import { PageMeta } from "@/components/shared/PageMeta";
-import { vendorsContent, pageMeta } from "@/data/siteContent";
+import { stackContent, pageMeta } from "@/data/siteContent";
 
-const Vendors = () => {
+const Stack = () => {
   return (
     <div className="min-h-screen bg-background">
-      <PageMeta title={pageMeta.vendors.title} description={pageMeta.vendors.description} />
+      <PageMeta title={pageMeta.stack.title} description={pageMeta.stack.description} />
       <Header />
       <main>
         {/* Hero */}
@@ -22,27 +23,27 @@ const Vendors = () => {
               className="text-center"
             >
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Vendor{" "}
-                <span className="text-gradient-accent">integrations</span>
+                Your{" "}
+                <span className="text-gradient-accent">stack</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                We're vendor-agnostic. We configure and manage your existing tools — 
-                not build custom integrations.
+                We work with your existing tools — not build custom integrations. 
+                We configure, monitor, and manage what you already have.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Integration Categories */}
-        <section id="integrations" className="py-24 bg-muted/30">
+        {/* Tool Categories */}
+        <section id="categories" className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <SectionHeader 
-              title="Integration categories"
-              subtitle="How we connect and manage your stack"
+              title="Tool categories"
+              subtitle="We work with the platforms your SaaS already uses"
             />
             
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {vendorsContent.integrationCategories.map((category, index) => (
+              {stackContent.toolCategories.map((category, index) => (
                 <motion.div
                   key={category.title}
                   id={category.slug}
@@ -58,10 +59,10 @@ const Vendors = () => {
                   <h3 className="text-lg font-semibold text-foreground mb-2">{category.title}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{category.description}</p>
                   <ul className="space-y-2">
-                    {category.items.map((item) => (
-                      <li key={item} className="text-xs text-muted-foreground flex items-center gap-2">
+                    {category.examples.map((example) => (
+                      <li key={example} className="text-xs text-muted-foreground flex items-center gap-2">
                         <span className="w-1 h-1 rounded-full bg-accent" />
-                        {item}
+                        {example}
                       </li>
                     ))}
                   </ul>
@@ -71,52 +72,53 @@ const Vendors = () => {
           </div>
         </section>
 
-        {/* Supported Tooling */}
-        <section id="supported-tooling" className="py-24 bg-background">
+        {/* How We Work */}
+        <section id="how-we-work" className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <SectionHeader 
-              title={vendorsContent.supportedTooling.title}
-              subtitle={vendorsContent.supportedTooling.description}
+              title={stackContent.howWeWork.title}
+              subtitle={stackContent.howWeWork.description}
             />
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {vendorsContent.supportedTooling.categories.map((category, index) => (
-                <motion.div
-                  key={category.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.08 }}
-                  className="bg-card rounded-xl p-6 border border-border"
-                >
-                  <h3 className="text-sm font-semibold text-foreground mb-4">{category.name}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {category.tools.map((tool) => (
-                      <span 
-                        key={tool} 
-                        className="px-3 py-1 text-xs bg-secondary text-secondary-foreground rounded-full"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+            <div className="max-w-2xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-card rounded-2xl p-8 border border-border"
+              >
+                <ul className="space-y-4">
+                  {stackContent.howWeWork.points.map((point, index) => (
+                    <motion.li
+                      key={point}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="flex items-start gap-3"
+                    >
+                      <Check className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                      <span className="text-foreground">{point}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Onboarding Checklist */}
+        {/* Onboarding */}
         <section id="onboarding" className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <SectionHeader 
-              title={vendorsContent.onboardingChecklist.title}
-              subtitle={vendorsContent.onboardingChecklist.description}
+              title={stackContent.onboarding.title}
+              subtitle={stackContent.onboarding.description}
             />
             
             <div className="max-w-3xl mx-auto">
               <div className="grid sm:grid-cols-2 gap-4">
-                {vendorsContent.onboardingChecklist.steps.map((step, index) => (
+                {stackContent.onboarding.steps.map((step, index) => (
                   <motion.div
                     key={step.step}
                     initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
@@ -147,4 +149,4 @@ const Vendors = () => {
   );
 };
 
-export default Vendors;
+export default Stack;

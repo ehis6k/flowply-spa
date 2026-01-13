@@ -46,12 +46,12 @@ export const navItems: NavItem[] = [
     ]
   },
   { 
-    label: "Vendors", 
-    href: "/vendors",
+    label: "Stack", 
+    href: "/stack",
     children: [
-      { label: "Integrations", href: "/vendors#integrations", description: "API, sync & reliability" },
-      { label: "Supported categories", href: "/vendors#supported-tooling", description: "AI, automation, CRM & more" },
-      { label: "Onboarding checklist", href: "/vendors#onboarding", description: "How we bring vendors live" },
+      { label: "Tool categories", href: "/stack#categories", description: "AI, automation, CRM & more" },
+      { label: "How we work", href: "/stack#how-we-work", description: "Our approach to your tools" },
+      { label: "Onboarding", href: "/stack#onboarding", description: "Getting started with FlowPly" },
     ]
   },
   { label: "Contact", href: "/contact" },
@@ -81,7 +81,7 @@ export const globalCTAs = {
 export const heroContent = {
   headline: "We run your automations",
   headlineAccent: "in production.",
-  subheadline: "FlowPly manages and monitors your deployed AI & workflow systems — with SLAs, human escalation and full operational oversight.",
+  subheadline: "We help SaaS vendors run operations for their customers — with SLAs, human escalation and full audit trails.",
   latestUpdate: {
     label: "New",
     text: "Now accepting new managed operations clients",
@@ -454,70 +454,50 @@ export interface IntegrationCategory {
   items: string[];
 }
 
-export const vendorsContent = {
-  integrationCategories: [
+export const stackContent = {
+  toolCategories: [
     {
       icon: Plug,
-      title: "API Connections",
-      slug: "api-connections",
-      description: "Secure, managed connections to your existing tools and platforms.",
-      items: ["REST API integration", "GraphQL support", "OAuth2 authentication", "API key management"],
+      title: "AI Platforms",
+      slug: "ai-platforms",
+      description: "We work with the AI tools your SaaS already uses.",
+      examples: ["LLM APIs", "Conversational AI", "Document processing", "Speech-to-text"],
     },
     {
       icon: RefreshCcw,
-      title: "Data Sync & Routing",
-      slug: "data-sync",
-      description: "Real-time data synchronization across your automation stack.",
-      items: ["Bi-directional sync", "Conflict resolution", "Field mapping", "Transformation rules"],
+      title: "Automation Tools",
+      slug: "automation-tools",
+      description: "We manage your existing automation and workflow platforms.",
+      examples: ["No-code automation", "Workflow builders", "Integration platforms", "ETL tools"],
     },
     {
-      icon: CheckCircle,
-      title: "Automation Reliability",
-      slug: "automation-reliability",
-      description: "Ensuring your automations run reliably at scale.",
-      items: ["Retry logic", "Circuit breakers", "Rate limiting", "Queue management"],
+      icon: Server,
+      title: "Business Systems",
+      slug: "business-systems",
+      description: "We connect to your CRM, helpdesk, and communication tools.",
+      examples: ["CRM platforms", "Helpdesk software", "Communication tools", "Data warehouses"],
     },
-  ] as IntegrationCategory[],
-  
-  supportedTooling: {
-    title: "Supported Tooling",
-    description: "We configure and manage your existing tools — not build custom integrations.",
-    categories: [
-      {
-        name: "AI Platforms",
-        tools: ["OpenAI", "Anthropic", "Azure OpenAI", "Google AI", "Cohere"],
-      },
-      {
-        name: "Automation",
-        tools: ["Make", "Zapier", "n8n", "Tray.io", "Workato"],
-      },
-      {
-        name: "CRM & Sales",
-        tools: ["Salesforce", "HubSpot", "Pipedrive", "Close", "Zoho"],
-      },
-      {
-        name: "Support",
-        tools: ["Zendesk", "Intercom", "Freshdesk", "Front", "Help Scout"],
-      },
-      {
-        name: "Communication",
-        tools: ["Slack", "Microsoft Teams", "Twilio", "SendGrid", "Vonage"],
-      },
-      {
-        name: "Data & Analytics",
-        tools: ["Snowflake", "BigQuery", "Segment", "Amplitude", "Mixpanel"],
-      },
+  ],
+
+  howWeWork: {
+    title: "How we work with your stack",
+    description: "We don't build integrations — we operate what you already have.",
+    points: [
+      "We configure and monitor your existing tools",
+      "We set up alerting and incident response",
+      "We manage credentials and access securely",
+      "We document everything in audit trails",
     ],
   },
 
-  onboardingChecklist: {
-    title: "How we onboard a vendor",
-    description: "Our standard integration onboarding process",
+  onboarding: {
+    title: "Getting started",
+    description: "Our standard onboarding process for your tools",
     steps: [
       { step: "1", title: "Access provisioning", description: "Secure API credentials and access setup" },
       { step: "2", title: "Logging configuration", description: "Set up monitoring and audit logging" },
       { step: "3", title: "Test environment", description: "Validate integration in staging" },
-      { step: "4", title: "Rollback preparation", description: "Document and test rollback procedures" },
+      { step: "4", title: "Go-live", description: "Production deployment with rollback ready" },
     ],
   },
 };
@@ -653,7 +633,7 @@ export const footerContent = {
 export const pageMeta = {
   home: {
     title: "FlowPly | Managed Operations for AI SaaS",
-    description: "FlowPly manages and monitors your deployed AI & workflow systems with SLAs, human escalation and full operational oversight.",
+    description: "We help SaaS vendors run operations for their customers — with SLAs, human escalation and full audit trails.",
   },
   model: {
     title: "The FlowPly Model | How Our Ops Layer Works",
@@ -667,9 +647,9 @@ export const pageMeta = {
     title: "Controls & Reliability | Enterprise-Grade Trust",
     description: "Monitoring, human-in-the-loop, audit trails, and security controls that keep your automations reliable and compliant.",
   },
-  vendors: {
-    title: "Vendor Integrations | Connect Your Stack",
-    description: "We configure and manage your existing tools. See supported platforms and our vendor onboarding process.",
+  stack: {
+    title: "Your Stack | Tools We Work With",
+    description: "We work with your existing AI, automation, and workflow tools. See the categories we support and how we onboard your stack.",
   },
   contact: {
     title: "Contact FlowPly | Book Your Assessment",
