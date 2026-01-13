@@ -9,6 +9,9 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Pricing } from "@/components/sections/Pricing";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { VendorLogos } from "@/components/shared/VendorLogos";
+import { Testimonials } from "@/components/shared/Testimonials";
+import { ControlsCarousel } from "@/components/shared/ControlsCarousel";
 
 const Index = () => {
   return (
@@ -18,10 +21,13 @@ const Index = () => {
         <HeroSection />
         <ProductPillars />
         <SocialProof />
+        <VendorLogos />
         <WhyFlowPly />
         <UseCases />
+        <ControlsCarousel />
         <HowItWorks />
         <Pricing />
+        <Testimonials />
         <TrustSection />
         <CTASection />
       </main>
