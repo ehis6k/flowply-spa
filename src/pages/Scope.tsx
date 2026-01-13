@@ -1,10 +1,9 @@
 import { motion } from "framer-motion";
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, Activity, Brain, Workflow } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { CardGrid } from "@/components/shared/CardGrid";
 import { CTABand } from "@/components/shared/CTABand";
 import { PageMeta } from "@/components/shared/PageMeta";
 import { scopeContent, serviceCards, useCases, pageMeta } from "@/data/siteContent";
@@ -12,6 +11,11 @@ import { useAnalytics } from "@/hooks/useAnalytics";
 
 const Scope = () => {
   const { trackUseCaseClick } = useAnalytics();
+
+  // Get individual service cards for detailed sections
+  const managedOps = serviceCards.find(c => c.slug === "managed-operations");
+  const aiOrch = serviceCards.find(c => c.slug === "ai-orchestration");
+  const integrations = serviceCards.find(c => c.slug === "integrations");
 
   return (
     <div className="min-h-screen bg-background">
@@ -100,14 +104,162 @@ const Scope = () => {
           </div>
         </section>
 
-        {/* Service Areas */}
+        {/* Managed Operations */}
         <section id="managed-operations" className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <SectionHeader 
-              title="Service areas" 
-              subtitle="Three pillars of managed operations"
+              title="Managed Operations" 
+              subtitle="Monitoring, alerting & incident response for your automation stack"
             />
-            <CardGrid cards={serviceCards} />
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-card rounded-2xl p-8 border border-border"
+              >
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                    <Activity className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-2">What's included</h3>
+                    <p className="text-muted-foreground">
+                      We take ownership of your automation infrastructure's health and performance.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    "24/7 monitoring of all automation endpoints",
+                    "Incident detection and response",
+                    "Change management with approval workflows",
+                    "SLA tracking and uptime guarantees",
+                    "Performance optimization recommendations",
+                    "Monthly reporting and reviews"
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      className="flex items-center gap-3"
+                    >
+                      <Check className="h-4 w-4 text-accent shrink-0" />
+                      <span className="text-sm text-foreground">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* AI Orchestration */}
+        <section id="ai-orchestration" className="py-24 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <SectionHeader 
+              title="AI Orchestration" 
+              subtitle="HITL, guardrails & audit trails for your AI systems"
+            />
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-card rounded-2xl p-8 border border-border"
+              >
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                    <Brain className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-2">What's included</h3>
+                    <p className="text-muted-foreground">
+                      We manage the operational complexity of your AI systems with proper controls.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    "Prompt version control and management",
+                    "Human-in-the-loop approval gates",
+                    "Output guardrails and quality checks",
+                    "Complete audit trails for all AI decisions",
+                    "Model performance monitoring",
+                    "Escalation paths for edge cases"
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      className="flex items-center gap-3"
+                    >
+                      <Check className="h-4 w-4 text-primary shrink-0" />
+                      <span className="text-sm text-foreground">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Integrations & Workflows */}
+        <section id="integrations" className="py-24 bg-background">
+          <div className="container mx-auto px-4">
+            <SectionHeader 
+              title="Integrations & Workflows" 
+              subtitle="API connections & data routing across your stack"
+            />
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="bg-card rounded-2xl p-8 border border-border"
+              >
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0">
+                    <Workflow className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-2">What's included</h3>
+                    <p className="text-muted-foreground">
+                      We configure and maintain your integrations — ensuring data flows reliably.
+                    </p>
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    "API connection setup and management",
+                    "Data sync and routing configuration",
+                    "Retry logic and error handling",
+                    "Rate limiting and queue management",
+                    "Integration health monitoring",
+                    "Workflow optimization"
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.3, delay: index * 0.05 }}
+                      className="flex items-center gap-3"
+                    >
+                      <Check className="h-4 w-4 text-accent shrink-0" />
+                      <span className="text-sm text-foreground">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -130,11 +282,7 @@ const Scope = () => {
                   transition={{ duration: 0.4, delay: index * 0.08 }}
                   className="group bg-card rounded-xl p-5 border border-border hover:border-accent/30 hover:shadow-md transition-all duration-300"
                 >
-                  <Link 
-                    to={`/scope#${useCase.slug}`}
-                    onClick={() => trackUseCaseClick(useCase.title)}
-                    className="flex items-center gap-4"
-                  >
+                  <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-lg bg-secondary text-foreground flex items-center justify-center shrink-0 group-hover:bg-accent/10 group-hover:text-accent transition-colors">
                       <useCase.icon className="h-5 w-5" />
                     </div>
@@ -146,8 +294,7 @@ const Scope = () => {
                         {useCase.description}
                       </span>
                     </div>
-                    <ArrowRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                  </Link>
+                  </div>
                 </motion.div>
               ))}
             </div>
