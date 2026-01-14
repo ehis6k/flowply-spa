@@ -9,6 +9,7 @@ import {
   ChevronRight
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import builtInControlsVideo from "@/assets/Built-in_controls.mp4";
 
 interface ControlSlide {
   icon: LucideIcon;
@@ -90,13 +91,36 @@ export function ControlsCarousel() {
           </motion.p>
         </div>
 
-        <div 
-          className="relative max-w-4xl mx-auto"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
-          {/* Carousel content */}
-          <div className="relative h-[320px] md:h-[280px]">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Video */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="hidden lg:block"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border">
+              <video 
+                src={builtInControlsVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-background/10 via-transparent to-accent/5 pointer-events-none" />
+            </div>
+          </motion.div>
+
+          {/* Right: Carousel */}
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Carousel content */}
+            <div className="relative h-[320px] md:h-[280px]">
             <AnimatePresence mode="wait">
               {slides.map((slide, index) => (
                 index === currentIndex && (
@@ -170,20 +194,21 @@ export function ControlsCarousel() {
             <ChevronRight className="h-5 w-5" />
           </button>
 
-          {/* Dots indicator */}
-          <div className="flex justify-center gap-2 mt-8">
-            {slides.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goTo(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? "w-8 bg-accent" 
-                    : "w-2 bg-border hover:bg-muted-foreground"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+            {/* Dots indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goTo(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex 
+                      ? "w-8 bg-accent" 
+                      : "w-2 bg-border hover:bg-muted-foreground"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
