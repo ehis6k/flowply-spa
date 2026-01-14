@@ -58,10 +58,20 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
     };
   }, [isOpen, onClose]);
 
-  // Close on route change
+  // Close on route change (but not immediately on mount)
+  const prevPathRef = useRef<string | null>(null);
   useEffect(() => {
-    onClose();
-  }, [location.pathname, onClose]);
+    if (!isOpen) {
+      prevPathRef.current = location.pathname;
+      return;
+    }
+
+    if (prevPathRef.current && prevPathRef.current !== location.pathname) {
+      onClose();
+    }
+
+    prevPathRef.current = location.pathname;
+  }, [isOpen, location.pathname, onClose]);
 
   return (
     <AnimatePresence>
