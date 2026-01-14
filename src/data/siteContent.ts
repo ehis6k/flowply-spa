@@ -52,8 +52,12 @@ export const navItems: NavItem[] = [
       { label: "Tool categories", href: "/stack#categories", description: "AI, automation, CRM & more" },
       { label: "How we work", href: "/stack#how-we-work", description: "Our approach to your tools" },
       { label: "Onboarding", href: "/stack#onboarding", description: "Getting started with FlowPly" },
+      { label: "OpenAI Operations", href: "/integrations/openai-operations", description: "Production ops for OpenAI" },
+      { label: "Salesforce", href: "/integrations/salesforce-automation", description: "CRM automation ops" },
+      { label: "Zapier", href: "/integrations/zapier-production-ops", description: "Workflow automation ops" },
     ]
   },
+  { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ];
 

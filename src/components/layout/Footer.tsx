@@ -8,11 +8,17 @@ const footerLinks = {
     { label: "Controls & Reliability", href: "/controls" },
     { label: "Your Stack", href: "/stack" },
   ],
-  services: [
-    { label: "Managed Operations", href: "/scope#managed-operations" },
-    { label: "AI Orchestration", href: "/scope#ai-orchestration" },
-    { label: "Integrations", href: "/scope#integrations" },
-    { label: "Monitoring", href: "/controls#monitoring" },
+  useCases: [
+    { label: "Customer Support", href: "/use-cases/customer-support-automation" },
+    { label: "AI Intake", href: "/use-cases/ai-intake-operations" },
+    { label: "Claims & Backoffice", href: "/use-cases/claims-backoffice" },
+    { label: "Voice Agents", href: "/use-cases/voice-agent-operations" },
+  ],
+  integrations: [
+    { label: "OpenAI Operations", href: "/integrations/openai-operations" },
+    { label: "Salesforce", href: "/integrations/salesforce-automation" },
+    { label: "Zapier", href: "/integrations/zapier-production-ops" },
+    { label: "Insights", href: "/insights" },
   ],
   company: [
     { label: "About Us", href: "/model" },
@@ -31,7 +37,7 @@ export function Footer() {
   return (
     <footer id="contact" className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-8 lg:gap-10">
           {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <Link to="/">
@@ -91,11 +97,28 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Services Column */}
+          {/* Use Cases Column */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Services</h4>
+            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Use Cases</h4>
             <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
+              {footerLinks.useCases.map((link) => (
+                <li key={link.label}>
+                  <Link 
+                    to={link.href}
+                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Integrations Column */}
+          <div>
+            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Integrations</h4>
+            <ul className="space-y-3">
+              {footerLinks.integrations.map((link) => (
                 <li key={link.label}>
                   <Link 
                     to={link.href}
