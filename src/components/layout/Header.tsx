@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { navItems, globalCTAs } from "@/data/siteContent";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import flowplyLogo from "@/assets/flowply-logo-full.png";
 import { MobileDrawer } from "./MobileDrawer";
+import { LanguageSelector } from "@/components/shared/LanguageSelector";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -154,8 +155,8 @@ export function Header() {
               })}
             </nav>
 
-            {/* CTA Button - Desktop */}
-            <div className="hidden md:flex items-center gap-4">
+            {/* CTA Button & Language Selector - Desktop */}
+            <div className="hidden md:flex items-center gap-3">
               <Button 
                 asChild 
                 variant="accent" 
@@ -166,6 +167,7 @@ export function Header() {
                   {globalCTAs.header.label}
                 </Link>
               </Button>
+              <LanguageSelector />
             </div>
 
             {/* Mobile Menu Toggle - only on phone/tablet */}
