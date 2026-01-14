@@ -107,6 +107,7 @@ export function ControlsCarousel() {
                 loop
                 muted
                 playsInline
+                preload="auto"
                 className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-background/10 via-transparent to-accent/5 pointer-events-none" />
