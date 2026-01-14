@@ -7,6 +7,7 @@ import { useAnalytics } from "@/hooks/useAnalytics";
 import { FloatingOrbs } from "@/components/shared/FloatingOrbs";
 import { FlowLines } from "@/components/shared/FlowLines";
 import heroTeamImage from "@/assets/hero-team.png";
+import operationCanvasImage from "@/assets/OperationCanvas.png";
 
 const easeOut: Easing = "easeOut";
 
@@ -93,18 +94,18 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: Hero Image */}
+          {/* Right: Hero Image - 16:10 ratio */}
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={getTransition(0.4)}
             className="relative hidden lg:block"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[16/10]">
               <img 
-                src={heroTeamImage} 
-                alt="Team werkt samen aan data analytics dashboards"
-                className="w-full h-auto object-cover opacity-90"
+                src={operationCanvasImage} 
+                alt="FlowPly operations canvas - visual workflow management"
+                className="w-full h-full object-cover opacity-90"
               />
               {/* Subtle overlay for brand cohesion */}
               <div className="absolute inset-0 bg-gradient-to-tr from-background/15 via-transparent to-accent/10 pointer-events-none" />

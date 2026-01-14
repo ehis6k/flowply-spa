@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Activity, Brain, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import diagramLayerVideo from "@/assets/DIagramLayer.mp4";
 
 const pillars = [
   {
@@ -43,7 +44,30 @@ export function ProductPillars() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-5 gap-8 items-center">
+          {/* Left: Video (2 cols) */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="hidden lg:block lg:col-span-2"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border">
+              <video 
+                src={diagramLayerVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-background/10 via-transparent to-accent/5 pointer-events-none" />
+            </div>
+          </motion.div>
+
+          {/* Right: Pillars (3 cols) */}
+          <div className="lg:col-span-3 grid md:grid-cols-3 gap-6">
           {pillars.map((pillar, index) => (
             <motion.div
               key={pillar.title}
@@ -95,7 +119,8 @@ export function ProductPillars() {
                 </Button>
               </div>
             </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

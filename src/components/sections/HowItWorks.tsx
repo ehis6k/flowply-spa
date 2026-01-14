@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ClipboardCheck, Shield, BarChart3 } from "lucide-react";
+import operationalFlowVideo from "@/assets/operational_flow.mp4";
 
 const steps = [
   {
@@ -44,11 +45,9 @@ export function HowItWorks() {
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 relative">
-            {/* Connection line */}
-            <div className="hidden md:block absolute top-12 left-[16.67%] right-[16.67%] h-px bg-border" />
-            
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Steps */}
+          <div className="grid md:grid-cols-3 lg:grid-cols-1 gap-8 relative">
             {steps.map((step, index) => (
               <motion.div
                 key={step.title}
@@ -56,27 +55,50 @@ export function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="relative text-center"
+                className="relative flex items-start gap-6 lg:text-left text-center lg:flex-row flex-col lg:items-start items-center"
               >
                 {/* Step indicator */}
-                <div className="relative z-10 w-24 h-24 rounded-2xl bg-card border border-border shadow-sm flex flex-col items-center justify-center mx-auto mb-6">
-                  <step.icon className="h-8 w-8 text-accent mb-1" />
+                <div className="relative z-10 w-20 h-20 rounded-2xl bg-card border border-border shadow-sm flex flex-col items-center justify-center flex-shrink-0">
+                  <step.icon className="h-7 w-7 text-accent mb-1" />
                   <span className="text-xs font-bold text-muted-foreground">{step.number}</span>
                 </div>
                 
                 {/* Content */}
-                <h3 className="text-lg font-semibold text-foreground mb-1">
-                  {step.title}
-                </h3>
-                <span className="text-xs font-medium text-accent mb-3 block">
-                  {step.duration}
-                </span>
-                <p className="text-sm text-muted-foreground">
-                  {step.description}
-                </p>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-foreground mb-1">
+                    {step.title}
+                  </h3>
+                  <span className="text-xs font-medium text-accent mb-2 block">
+                    {step.duration}
+                  </span>
+                  <p className="text-sm text-muted-foreground">
+                    {step.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Right: Video */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="hidden lg:block"
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border">
+              <video 
+                src={operationalFlowVideo}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-background/10 via-transparent to-accent/5 pointer-events-none" />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
