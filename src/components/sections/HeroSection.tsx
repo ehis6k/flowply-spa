@@ -30,6 +30,16 @@ export function HeroSection() {
 
   return (
     <section className="relative pt-32 lg:pt-40 pb-20 lg:pb-24 overflow-hidden bg-background bg-network-pattern">
+      {/* Background image for mobile/tablet - behind the text */}
+      <div className="absolute inset-0 lg:hidden">
+        <img 
+          src={operationCanvasImage}
+          alt=""
+          className="w-full h-full object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+      </div>
+
       {/* Floating orbs background */}
       <FloatingOrbs variant="hero" />
       
