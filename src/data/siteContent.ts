@@ -585,7 +585,7 @@ export const contactContent = {
   fallback: {
     title: "Having trouble?",
     message: "Email us directly at",
-    email: "hello@flowply.io",
+    email: "info@flowply.com",
   },
   formFields: {
     name: { label: "Name", placeholder: "Your name" },
