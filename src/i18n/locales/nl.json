@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "model": "Model",
+    "scope": "Omvang",
+    "controls": "Controles",
+    "stack": "Stack",
+    "insights": "Inzichten",
+    "contact": "Contact"
+  },
+  "nav_children": {
+    "managed_operations": "Beheerde operaties",
+    "managed_operations_desc": "Monitoring, alerting & incidentrespons",
+    "ai_orchestration": "AI-orkestratie",
+    "ai_orchestration_desc": "HITL, guardrails & audittrails",
+    "integrations_workflows": "Integraties & workflows",
+    "integrations_workflows_desc": "API-verbindingen & dataroutering",
+    "use_cases": "Use cases",
+    "use_cases_desc": "Support, sales, backoffice & meer",
+    "monitoring": "Monitoring",
+    "monitoring_desc": "Realtime zichtbaarheid & alerting",
+    "escalations": "Escalaties",
+    "escalations_desc": "Gelaagde responspaden",
+    "hitl": "HITL",
+    "hitl_desc": "Menselijke goedkeuringspoorten",
+    "audit_trails": "Audittrails",
+    "audit_trails_desc": "Volledige wijzigingsgeschiedenis",
+    "security": "Beveiliging",
+    "security_desc": "Enterprise-grade controles",
+    "tool_categories": "Toolcategorieën",
+    "tool_categories_desc": "AI, automatisering, CRM & meer",
+    "how_we_work": "Hoe wij werken",
+    "how_we_work_desc": "Onze aanpak voor uw tools",
+    "onboarding": "Onboarding",
+    "onboarding_desc": "Aan de slag met FlowPly",
+    "openai_operations": "OpenAI Operations",
+    "openai_operations_desc": "Productie-ops voor OpenAI",
+    "salesforce": "Salesforce",
+    "salesforce_desc": "CRM-automatisering ops",
+    "zapier": "Zapier",
+    "zapier_desc": "Workflow-automatisering ops"
+  },
+  "cta": {
+    "book_assessment": "Assessment boeken",
+    "see_how_it_works": "Bekijk hoe het werkt",
+    "start_planning": "Start planning",
+    "request_assessment": "Assessment aanvragen",
+    "get_started": "Aan de slag",
+    "contact_us": "Neem contact op",
+    "view_checklist": "Bekijk checklist"
+  },
+  "hero": {
+    "headline": "Wij draaien uw automatiseringen",
+    "headline_accent": "in productie.",
+    "subheadline": "Wij helpen SaaS-leveranciers operaties te draaien voor hun klanten — met SLA's, menselijke escalatie en volledige audittrails.",
+    "latest_update_label": "Nieuw",
+    "latest_update_text": "Nu accepteren wij nieuwe managed operations klanten"
+  },
+  "contact": {
+    "title": "Plan een operationele assessment",
+    "subtitle": "30–45 minuten. We bekijken uw huidige AI-automatiseringsopzet, eigendomsmodel en operationele risico's. Geen demo. Geen verkooppraatje.",
+    "form": {
+      "name_label": "Naam",
+      "name_placeholder": "Uw naam",
+      "email_label": "Werk-e-mail",
+      "email_placeholder": "u@bedrijf.nl",
+      "company_label": "Bedrijf",
+      "company_placeholder": "Uw bedrijfsnaam",
+      "systems_label": "Aantal AI-systemen",
+      "systems_placeholder": "Selecteer aantal systemen",
+      "systems_option_1": "1 systeem",
+      "systems_option_3_5": "3-5 systemen",
+      "systems_option_enterprise": "Enterprise (5+ systemen)",
+      "message_label": "Wat wilt u oplossen?",
+      "message_placeholder": "Vertel ons over uw huidige automatiseringsuitdagingen...",
+      "submit": "Assessment aanvragen",
+      "secure_message": "Uw informatie is veilig en wordt nooit gedeeld."
+    },
+    "confirmation": {
+      "title": "Bedankt voor uw bericht!",
+      "message": "We nemen binnen 24 uur contact met u op om uw assessment in te plannen."
+    },
+    "alternate_email": "Liever e-mail? Bereik ons op",
+    "what_happens": "Wat gebeurt er na het plannen",
+    "process": {
+      "step1_title": "Bevestigingsmail",
+      "step1_desc": "U ontvangt binnen 24 uur een agenda-uitnodiging.",
+      "step2_title": "Assessment-gesprek",
+      "step2_desc": "We bekijken samen uw stack, risico's en operationele hiaten.",
+      "step3_title": "Schriftelijke samenvatting",
+      "step3_desc": "U krijgt een eenpagina operationele assessment met vervolgstappen."
+    },
+    "checklist_title": "AI Operations Checklist",
+    "checklist_desc": "Een praktische checklist om de productiegereedheid van uw AI-automatisering te beoordelen.",
+    "faq_title": "Assessment FAQ"
+  },
+  "trust_metrics": {
+    "uptime": "Uptime",
+    "operations": "Operaties",
+    "response": "Respons",
+    "audit_trail": "Audittrail",
+    "trusted_by": "Vertrouwd door teams die bedrijfskritieke automatiseringen draaien"
+  },
+  "footer": {
+    "tagline": "Beheerde operaties voor AI-automatisering",
+    "product": "Product",
+    "company": "Bedrijf",
+    "legal": "Juridisch",
+    "use_cases": "Use Cases",
+    "integrations": "Integraties",
+    "privacy": "Privacy",
+    "terms": "Voorwaarden",
+    "all_rights": "Alle rechten voorbehouden"
+  },
+  "faq": {
+    "q1": "Wat wordt er tijdens de assessment besproken?",
+    "a1": "We bekijken uw huidige AI-automatiseringsstack, identificeren operationele hiaten, beoordelen de duidelijkheid van eigendom en evalueren productiegereedheid. U ontvangt een schriftelijke samenvatting met geprioriteerde aanbevelingen.",
+    "q2": "Hoe lang duurt het assessment-gesprek?",
+    "a2": "30–45 minuten. We focussen op het begrijpen van uw opzet en uitdagingen, niet op het pitchen van diensten.",
+    "q3": "Is de assessment gratis?",
+    "a3": "Ja, de initiële assessment is gratis. Wij geloven in het verdienen van vertrouwen voordat we om commitment vragen.",
+    "q4": "Wat gebeurt er na de assessment?",
+    "a4": "U ontvangt een eenpagina operationele samenvatting. Als er een match is, kunnen we vervolgstappen bespreken. Zo niet, dan houdt u de inzichten."
+  },
+  "validation": {
+    "name_required": "Naam is verplicht",
+    "name_max": "Naam mag maximaal 100 tekens bevatten",
+    "email_invalid": "Voer een geldig e-mailadres in",
+    "email_max": "E-mail mag maximaal 255 tekens bevatten",
+    "company_required": "Bedrijf is verplicht",
+    "company_max": "Bedrijfsnaam mag maximaal 100 tekens bevatten",
+    "systems_required": "Selecteer het aantal systemen",
+    "message_max": "Bericht mag maximaal 1000 tekens bevatten"
+  }
+}

@@ -2,14 +2,56 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Menu, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
-import { navItems, globalCTAs } from "@/data/siteContent";
+import { globalCTAs } from "@/data/siteContent";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import flowplyLogo from "@/assets/flowply-logo-full.png";
 import { MobileDrawer } from "./MobileDrawer";
 import { LanguageSelector } from "@/components/shared/LanguageSelector";
 
+// Navigation structure with translation keys
+const getNavItems = (t: (key: string) => string) => [
+  { label: t("nav.model"), href: "/model" },
+  { 
+    label: t("nav.scope"), 
+    href: "/scope",
+    children: [
+      { label: t("nav_children.managed_operations"), href: "/scope#managed-operations", description: t("nav_children.managed_operations_desc") },
+      { label: t("nav_children.ai_orchestration"), href: "/scope#ai-orchestration", description: t("nav_children.ai_orchestration_desc") },
+      { label: t("nav_children.integrations_workflows"), href: "/scope#integrations", description: t("nav_children.integrations_workflows_desc") },
+      { label: t("nav_children.use_cases"), href: "/scope#use-cases", description: t("nav_children.use_cases_desc") },
+    ]
+  },
+  { 
+    label: t("nav.controls"), 
+    href: "/controls",
+    children: [
+      { label: t("nav_children.monitoring"), href: "/controls#monitoring", description: t("nav_children.monitoring_desc") },
+      { label: t("nav_children.escalations"), href: "/controls#escalations", description: t("nav_children.escalations_desc") },
+      { label: t("nav_children.hitl"), href: "/controls#hitl", description: t("nav_children.hitl_desc") },
+      { label: t("nav_children.audit_trails"), href: "/controls#audit-compliance", description: t("nav_children.audit_trails_desc") },
+      { label: t("nav_children.security"), href: "/controls#security", description: t("nav_children.security_desc") },
+    ]
+  },
+  { 
+    label: t("nav.stack"), 
+    href: "/stack",
+    children: [
+      { label: t("nav_children.tool_categories"), href: "/stack#categories", description: t("nav_children.tool_categories_desc") },
+      { label: t("nav_children.how_we_work"), href: "/stack#how-we-work", description: t("nav_children.how_we_work_desc") },
+      { label: t("nav_children.onboarding"), href: "/stack#onboarding", description: t("nav_children.onboarding_desc") },
+      { label: t("nav_children.openai_operations"), href: "/integrations/openai-operations", description: t("nav_children.openai_operations_desc") },
+      { label: t("nav_children.salesforce"), href: "/integrations/salesforce-automation", description: t("nav_children.salesforce_desc") },
+      { label: t("nav_children.zapier"), href: "/integrations/zapier-production-ops", description: t("nav_children.zapier_desc") },
+    ]
+  },
+  { label: t("nav.insights"), href: "/insights" },
+  { label: t("nav.contact"), href: "/contact" },
+];
+
 export function Header() {
+  const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -17,6 +59,8 @@ export function Header() {
   const { trackNavClick, trackCTAPrimary } = useAnalytics();
   const shouldReduceMotion = useReducedMotion();
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
+  const navItems = getNavItems(t);
 
   // Scroll detection for sticky header state change
   useEffect(() => {
@@ -164,7 +208,7 @@ export function Header() {
                 onClick={() => trackCTAPrimary("header")}
               >
                 <Link to={globalCTAs.header.href}>
-                  {globalCTAs.header.label}
+                  {t("cta.start_planning")}
                 </Link>
               </Button>
               <LanguageSelector />

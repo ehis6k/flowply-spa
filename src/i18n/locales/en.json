@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "model": "Model",
+    "scope": "Scope",
+    "controls": "Controls",
+    "stack": "Stack",
+    "insights": "Insights",
+    "contact": "Contact"
+  },
+  "nav_children": {
+    "managed_operations": "Managed Operations",
+    "managed_operations_desc": "Monitoring, alerting & incident response",
+    "ai_orchestration": "AI Orchestration",
+    "ai_orchestration_desc": "HITL, guardrails & audit trails",
+    "integrations_workflows": "Integrations & Workflows",
+    "integrations_workflows_desc": "API connections & data routing",
+    "use_cases": "Use cases",
+    "use_cases_desc": "Support, sales, backoffice & more",
+    "monitoring": "Monitoring",
+    "monitoring_desc": "Real-time visibility & alerting",
+    "escalations": "Escalations",
+    "escalations_desc": "Tiered response paths",
+    "hitl": "HITL",
+    "hitl_desc": "Human approval gates",
+    "audit_trails": "Audit trails",
+    "audit_trails_desc": "Complete change history",
+    "security": "Security",
+    "security_desc": "Enterprise-grade controls",
+    "tool_categories": "Tool categories",
+    "tool_categories_desc": "AI, automation, CRM & more",
+    "how_we_work": "How we work",
+    "how_we_work_desc": "Our approach to your tools",
+    "onboarding": "Onboarding",
+    "onboarding_desc": "Getting started with FlowPly",
+    "openai_operations": "OpenAI Operations",
+    "openai_operations_desc": "Production ops for OpenAI",
+    "salesforce": "Salesforce",
+    "salesforce_desc": "CRM automation ops",
+    "zapier": "Zapier",
+    "zapier_desc": "Workflow automation ops"
+  },
+  "cta": {
+    "book_assessment": "Book an assessment",
+    "see_how_it_works": "See how it works",
+    "start_planning": "Start Planning",
+    "request_assessment": "Request assessment",
+    "get_started": "Get started",
+    "contact_us": "Contact us",
+    "view_checklist": "View checklist"
+  },
+  "hero": {
+    "headline": "We run your automations",
+    "headline_accent": "in production.",
+    "subheadline": "We help SaaS vendors run operations for their customers — with SLAs, human escalation and full audit trails.",
+    "latest_update_label": "New",
+    "latest_update_text": "Now accepting new managed operations clients"
+  },
+  "contact": {
+    "title": "Schedule an operations assessment",
+    "subtitle": "30–45 minutes. We review your current AI automation setup, ownership model, and operational risks. No demo. No sales pitch.",
+    "form": {
+      "name_label": "Name",
+      "name_placeholder": "Your name",
+      "email_label": "Work email",
+      "email_placeholder": "you@company.com",
+      "company_label": "Company",
+      "company_placeholder": "Your company name",
+      "systems_label": "Number of AI systems",
+      "systems_placeholder": "Select number of systems",
+      "systems_option_1": "1 system",
+      "systems_option_3_5": "3-5 systems",
+      "systems_option_enterprise": "Enterprise (5+ systems)",
+      "message_label": "What are you looking to solve?",
+      "message_placeholder": "Tell us about your current automation challenges...",
+      "submit": "Request assessment",
+      "secure_message": "Your information is secure and will never be shared."
+    },
+    "confirmation": {
+      "title": "Thanks for reaching out!",
+      "message": "We'll get back to you within 24 hours to schedule your assessment."
+    },
+    "alternate_email": "Prefer email? Reach us at",
+    "what_happens": "What happens after scheduling",
+    "process": {
+      "step1_title": "Confirmation email",
+      "step1_desc": "You'll receive a calendar invite within 24 hours.",
+      "step2_title": "Assessment call",
+      "step2_desc": "We review your stack, risks, and operational gaps together.",
+      "step3_title": "Written summary",
+      "step3_desc": "You get a one-page operational assessment with next steps."
+    },
+    "checklist_title": "AI Operations Checklist",
+    "checklist_desc": "A practical checklist for assessing your AI automation's production readiness.",
+    "faq_title": "Assessment FAQ"
+  },
+  "trust_metrics": {
+    "uptime": "Uptime",
+    "operations": "Operations",
+    "response": "Response",
+    "audit_trail": "Audit Trail",
+    "trusted_by": "Trusted by teams running mission-critical automations"
+  },
+  "footer": {
+    "tagline": "Managed operations for AI automation",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "use_cases": "Use Cases",
+    "integrations": "Integrations",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "all_rights": "All rights reserved"
+  },
+  "faq": {
+    "q1": "What does the assessment cover?",
+    "a1": "We review your current AI automation stack, identify operational gaps, assess ownership clarity, and evaluate production readiness. You'll receive a written summary with prioritized recommendations.",
+    "q2": "How long is the assessment call?",
+    "a2": "30–45 minutes. We focus on understanding your setup and challenges, not pitching services.",
+    "q3": "Is the assessment free?",
+    "a3": "Yes, the initial assessment is free. We believe in earning trust before asking for commitment.",
+    "q4": "What happens after the assessment?",
+    "a4": "You receive a one-page operational summary. If there's a fit, we can discuss next steps. If not, you keep the insights."
+  },
+  "validation": {
+    "name_required": "Name is required",
+    "name_max": "Name must be less than 100 characters",
+    "email_invalid": "Please enter a valid email",
+    "email_max": "Email must be less than 255 characters",
+    "company_required": "Company is required",
+    "company_max": "Company name must be less than 100 characters",
+    "systems_required": "Please select number of systems",
+    "message_max": "Message must be less than 1000 characters"
+  }
+}
