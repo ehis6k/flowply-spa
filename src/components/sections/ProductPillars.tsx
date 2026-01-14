@@ -45,15 +45,15 @@ export function ProductPillars() {
       
       <div className="container mx-auto px-4 relative">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-5 gap-8 items-center">
-          {/* Left: Video (2 cols) */}
+          {/* Video - shown on all screens */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="hidden lg:block lg:col-span-2"
+            className="lg:col-span-2 order-first lg:order-none"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border max-w-md mx-auto lg:max-w-none">
               <video 
                 src={diagramLayerVideo}
                 autoPlay
