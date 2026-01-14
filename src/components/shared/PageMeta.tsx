@@ -3,9 +3,11 @@ import { useEffect } from "react";
 interface PageMetaProps {
   title: string;
   description: string;
+  ogImage?: string;
+  canonical?: string;
 }
 
-export function PageMeta({ title, description }: PageMetaProps) {
+export function PageMeta({ title, description, ogImage, canonical }: PageMetaProps) {
   useEffect(() => {
     // Update document title
     document.title = title;
@@ -35,7 +37,29 @@ export function PageMeta({ title, description }: PageMetaProps) {
       document.head.appendChild(ogDescription);
     }
     ogDescription.setAttribute("content", description);
-  }, [title, description]);
+
+    // Update OG image if provided
+    if (ogImage) {
+      let ogImageMeta = document.querySelector('meta[property="og:image"]');
+      if (!ogImageMeta) {
+        ogImageMeta = document.createElement("meta");
+        ogImageMeta.setAttribute("property", "og:image");
+        document.head.appendChild(ogImageMeta);
+      }
+      ogImageMeta.setAttribute("content", ogImage);
+    }
+
+    // Update canonical if provided
+    if (canonical) {
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement("link");
+        canonicalLink.setAttribute("rel", "canonical");
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute("href", canonical);
+    }
+  }, [title, description, ogImage, canonical]);
 
   return null;
 }
