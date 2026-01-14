@@ -34,7 +34,7 @@ export const insightArticles: InsightArticle[] = [
     slug: "what-breaks-after-ai-pilot",
     title: "What Breaks After the AI Pilot",
     subtitle: "Why successful POCs fail in production and how to prevent it",
-    date: "2024-01-15",
+    date: "2026-01-10",
     readingTime: "8 min read",
     icon: AlertTriangle,
     meta: {
@@ -87,7 +87,7 @@ export const insightArticles: InsightArticle[] = [
     slug: "why-ai-automations-fail-without-ownership",
     title: "Why AI Automations Fail Without Ownership",
     subtitle: "The operational accountability gap in enterprise AI deployments",
-    date: "2024-01-08",
+    date: "2026-01-06",
     readingTime: "7 min read",
     icon: Shield,
     meta: {
@@ -141,7 +141,7 @@ export const insightArticles: InsightArticle[] = [
     slug: "incidents-in-voice-agents",
     title: "Incidents We See in Voice Agents",
     subtitle: "Real operational challenges from production voice AI deployments",
-    date: "2024-01-01",
+    date: "2026-01-03",
     readingTime: "9 min read",
     icon: Phone,
     meta: {
