@@ -18,6 +18,7 @@ const footerLinks = {
     { label: "About Us", href: "/model" },
     { label: "Contact", href: "/contact" },
     { label: "Book Assessment", href: "/contact" },
+    { label: "Email Us", href: "mailto:info@flowply.com" },
   ],
   legal: [
     { label: "Privacy Policy", href: "/privacy" },
