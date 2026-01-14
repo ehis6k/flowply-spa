@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useTranslation } from "react-i18next";
 import { ArrowRight, CheckCircle, Calendar, Shield, Mail, FileText } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -15,21 +16,11 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { contactContent, pageMeta, trustMetrics } from "@/data/siteContent";
-import { assessmentFAQ, assessmentProcess } from "@/data/assessmentFAQ";
+import { pageMeta, trustMetrics } from "@/data/siteContent";
 import { useAnalytics } from "@/hooks/useAnalytics";
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
-  email: z.string().trim().email("Please enter a valid email").max(255, "Email must be less than 255 characters"),
-  company: z.string().trim().min(1, "Company is required").max(100, "Company name must be less than 100 characters"),
-  systemsCount: z.string().min(1, "Please select number of systems"),
-  message: z.string().trim().max(1000, "Message must be less than 1000 characters").optional(),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
-
 const Contact = () => {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [honeypot, setHoneypot] = useState("");
@@ -45,6 +36,16 @@ const Contact = () => {
       default: return "";
     }
   };
+
+  const contactSchema = z.object({
+    name: z.string().trim().min(1, t("validation.name_required")).max(100, t("validation.name_max")),
+    email: z.string().trim().email(t("validation.email_invalid")).max(255, t("validation.email_max")),
+    company: z.string().trim().min(1, t("validation.company_required")).max(100, t("validation.company_max")),
+    systemsCount: z.string().min(1, t("validation.systems_required")),
+    message: z.string().trim().max(1000, t("validation.message_max")).optional(),
+  });
+
+  type ContactFormData = z.infer<typeof contactSchema>;
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -73,6 +74,32 @@ const Contact = () => {
     setIsSubmitted(true);
   };
 
+  const systemOptions = [
+    { value: "1", label: t("contact.form.systems_option_1") },
+    { value: "3-5", label: t("contact.form.systems_option_3_5") },
+    { value: "enterprise", label: t("contact.form.systems_option_enterprise") },
+  ];
+
+  const faqItems = [
+    { question: t("faq.q1"), answer: t("faq.a1") },
+    { question: t("faq.q2"), answer: t("faq.a2") },
+    { question: t("faq.q3"), answer: t("faq.a3") },
+    { question: t("faq.q4"), answer: t("faq.a4") },
+  ];
+
+  const processSteps = [
+    { number: "1", title: t("contact.process.step1_title"), description: t("contact.process.step1_desc") },
+    { number: "2", title: t("contact.process.step2_title"), description: t("contact.process.step2_desc") },
+    { number: "3", title: t("contact.process.step3_title"), description: t("contact.process.step3_desc") },
+  ];
+
+  const translatedMetrics = [
+    { value: "99.9%", label: t("trust_metrics.uptime") },
+    { value: "24/7", label: t("trust_metrics.operations") },
+    { value: "<15min", label: t("trust_metrics.response") },
+    { value: "100%", label: t("trust_metrics.audit_trail") },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <PageMeta title={pageMeta.contact.title} description={pageMeta.contact.description} />
@@ -88,10 +115,10 @@ const Contact = () => {
               className="text-center"
             >
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                Schedule an operations assessment
+                {t("contact.title")}
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                30–45 minutes. We review your current AI automation setup, ownership model, and operational risks. No demo. No sales pitch.
+                {t("contact.subtitle")}
               </p>
             </motion.div>
           </div>
@@ -115,10 +142,10 @@ const Contact = () => {
                         <CheckCircle className="h-8 w-8" />
                       </div>
                       <h2 className="text-2xl font-bold text-foreground mb-4">
-                        {contactContent.confirmation.title}
+                        {t("contact.confirmation.title")}
                       </h2>
                       <p className="text-muted-foreground">
-                        {contactContent.confirmation.message}
+                        {t("contact.confirmation.message")}
                       </p>
                     </motion.div>
                   ) : (
@@ -148,9 +175,9 @@ const Contact = () => {
                             name="name"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>{contactContent.formFields.name.label}</FormLabel>
+                                <FormLabel>{t("contact.form.name_label")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder={contactContent.formFields.name.placeholder} {...field} />
+                                  <Input placeholder={t("contact.form.name_placeholder")} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -162,9 +189,9 @@ const Contact = () => {
                             name="email"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>{contactContent.formFields.email.label}</FormLabel>
+                                <FormLabel>{t("contact.form.email_label")}</FormLabel>
                                 <FormControl>
-                                  <Input type="email" placeholder={contactContent.formFields.email.placeholder} {...field} />
+                                  <Input type="email" placeholder={t("contact.form.email_placeholder")} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -176,9 +203,9 @@ const Contact = () => {
                             name="company"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>{contactContent.formFields.company.label}</FormLabel>
+                                <FormLabel>{t("contact.form.company_label")}</FormLabel>
                                 <FormControl>
-                                  <Input placeholder={contactContent.formFields.company.placeholder} {...field} />
+                                  <Input placeholder={t("contact.form.company_placeholder")} {...field} />
                                 </FormControl>
                                 <FormMessage />
                               </FormItem>
@@ -190,15 +217,15 @@ const Contact = () => {
                             name="systemsCount"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>{contactContent.formFields.systemsCount.label}</FormLabel>
+                                <FormLabel>{t("contact.form.systems_label")}</FormLabel>
                                 <Select onValueChange={field.onChange} value={field.value}>
                                   <FormControl>
                                     <SelectTrigger>
-                                      <SelectValue placeholder="Select number of systems" />
+                                      <SelectValue placeholder={t("contact.form.systems_placeholder")} />
                                     </SelectTrigger>
                                   </FormControl>
                                   <SelectContent>
-                                    {contactContent.formFields.systemsCount.options.map((option) => (
+                                    {systemOptions.map((option) => (
                                       <SelectItem key={option.value} value={option.value}>
                                         {option.label}
                                       </SelectItem>
@@ -215,10 +242,10 @@ const Contact = () => {
                             name="message"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel>{contactContent.formFields.message.label}</FormLabel>
+                                <FormLabel>{t("contact.form.message_label")}</FormLabel>
                                 <FormControl>
                                   <Textarea 
-                                    placeholder={contactContent.formFields.message.placeholder} 
+                                    placeholder={t("contact.form.message_placeholder")} 
                                     className="min-h-[120px]"
                                     {...field} 
                                   />
@@ -230,13 +257,13 @@ const Contact = () => {
 
                           <Button type="submit" variant="hero-accent" size="lg" className="w-full group">
                             <Calendar className="h-5 w-5 mr-2" />
-                            Request assessment
+                            {t("cta.request_assessment")}
                             <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />
                           </Button>
 
                           <p className="text-xs text-center text-muted-foreground flex items-center justify-center gap-2">
                             <Shield className="h-3 w-3" />
-                            Your information is secure and will never be shared.
+                            {t("contact.form.secure_message")}
                           </p>
                         </form>
                       </Form>
@@ -247,7 +274,7 @@ const Contact = () => {
                   <div className="mt-6 text-center">
                     <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
                       <Mail className="h-4 w-4" />
-                      Prefer email? Reach us at{" "}
+                      {t("contact.alternate_email")}{" "}
                       <a href="mailto:info@flowply.com" className="text-accent hover:underline">
                         info@flowply.com
                       </a>
@@ -259,10 +286,10 @@ const Contact = () => {
                 <div className="space-y-8">
                   <div>
                     <h2 className="text-xl font-semibold text-foreground mb-6">
-                      What happens after scheduling
+                      {t("contact.what_happens")}
                     </h2>
                     <div className="space-y-6">
-                      {assessmentProcess.map((step, index) => (
+                      {processSteps.map((step, index) => (
                         <motion.div
                           key={step.number}
                           initial={{ opacity: 0, x: 20 }}
@@ -294,15 +321,15 @@ const Contact = () => {
                         <FileText className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="font-medium text-foreground">AI Operations Checklist</h3>
+                        <h3 className="font-medium text-foreground">{t("contact.checklist_title")}</h3>
                         <p className="text-sm text-muted-foreground mt-1 mb-3">
-                          A practical checklist for assessing your AI automation's production readiness.
+                          {t("contact.checklist_desc")}
                         </p>
                         <a 
                           href="/resources/ai-operations-checklist" 
                           className="text-sm text-accent hover:underline inline-flex items-center gap-1"
                         >
-                          View checklist
+                          {t("cta.view_checklist")}
                           <ArrowRight className="h-3 w-3" />
                         </a>
                       </div>
@@ -319,10 +346,10 @@ const Contact = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <h2 className="text-2xl font-bold text-foreground text-center mb-8">
-                Assessment FAQ
+                {t("contact.faq_title")}
               </h2>
               <Accordion type="single" collapsible className="w-full">
-                {assessmentFAQ.map((item, index) => (
+                {faqItems.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
                     <AccordionTrigger className="text-left">
                       {item.question}
@@ -348,11 +375,11 @@ const Contact = () => {
               className="text-center"
             >
               <p className="text-sm text-muted-foreground mb-8">
-                Trusted by teams running mission-critical automations
+                {t("trust_metrics.trusted_by")}
               </p>
               
               <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-                {trustMetrics.map((metric, index) => (
+                {translatedMetrics.map((metric, index) => (
                   <motion.div
                     key={metric.label}
                     initial={{ opacity: 0, y: 10 }}

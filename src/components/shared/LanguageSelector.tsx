@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 interface Language {
   code: string;
@@ -15,12 +16,13 @@ const languages: Language[] = [
 
 export function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>(languages[0]);
+  const { i18n } = useTranslation();
+  
+  const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
 
   const handleSelect = (language: Language) => {
-    setSelectedLanguage(language);
+    i18n.changeLanguage(language.code);
     setIsOpen(false);
-    // Future: implement actual language switching logic
   };
 
   return (
@@ -30,7 +32,7 @@ export function LanguageSelector() {
         className="flex items-center gap-1.5 px-2 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary/30"
         aria-label="Select language"
       >
-        <span className="text-lg leading-none">{selectedLanguage.flag}</span>
+        <span className="text-lg leading-none">{currentLanguage.flag}</span>
         <ChevronDown
           className={`h-3.5 w-3.5 transition-transform duration-200 ${
             isOpen ? "rotate-180" : ""
@@ -59,7 +61,7 @@ export function LanguageSelector() {
                     key={language.code}
                     onClick={() => handleSelect(language)}
                     className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm transition-colors ${
-                      selectedLanguage.code === language.code
+                      currentLanguage.code === language.code
                         ? "bg-secondary/50 text-foreground"
                         : "text-muted-foreground hover:bg-secondary/30 hover:text-foreground"
                     }`}

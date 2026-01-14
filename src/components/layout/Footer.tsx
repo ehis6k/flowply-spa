@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import flowplyLogo from "@/assets/flowply-logo-full.png";
 
-const footerLinks = {
+const getFooterLinks = (t: (key: string) => string) => ({
   product: [
     { label: "How It Works", href: "/model" },
     { label: "Scope of Services", href: "/scope" },
@@ -18,22 +19,25 @@ const footerLinks = {
     { label: "OpenAI Operations", href: "/integrations/openai-operations" },
     { label: "Salesforce", href: "/integrations/salesforce-automation" },
     { label: "Zapier", href: "/integrations/zapier-production-ops" },
-    { label: "Insights", href: "/insights" },
+    { label: t("nav.insights"), href: "/insights" },
   ],
   company: [
     { label: "About Us", href: "/model" },
-    { label: "Contact", href: "/contact" },
-    { label: "Book Assessment", href: "/contact" },
+    { label: t("nav.contact"), href: "/contact" },
+    { label: t("cta.book_assessment"), href: "/contact" },
     { label: "Email Us", href: "mailto:info@flowply.com" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "/privacy" },
-    { label: "Terms of Service", href: "/terms" },
-    { label: "Security", href: "/controls#security" },
+    { label: t("footer.privacy"), href: "/privacy" },
+    { label: t("footer.terms"), href: "/terms" },
+    { label: t("nav_children.security"), href: "/controls#security" },
   ],
-};
+});
 
 export function Footer() {
+  const { t } = useTranslation();
+  const footerLinks = getFooterLinks(t);
+
   return (
     <footer id="contact" className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-16">
@@ -48,7 +52,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-primary-foreground/70 text-sm max-w-xs mb-6">
-              Managed Operations for AI SaaS. We run the operational layer so you don't have to.
+              {t("footer.tagline")}
             </p>
             <div className="flex items-center gap-4 mb-6">
               {/* Social links */}
@@ -76,13 +80,13 @@ export function Footer() {
               </a>
             </div>
             <p className="text-primary-foreground/50 text-xs">
-              © {new Date().getFullYear()} FlowPly. All rights reserved.
+              © {new Date().getFullYear()} FlowPly. {t("footer.all_rights")}
             </p>
           </div>
 
           {/* Product Column */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Product</h4>
+            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">{t("footer.product")}</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
@@ -99,7 +103,7 @@ export function Footer() {
 
           {/* Use Cases Column */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Use Cases</h4>
+            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">{t("footer.use_cases")}</h4>
             <ul className="space-y-3">
               {footerLinks.useCases.map((link) => (
                 <li key={link.label}>
@@ -116,7 +120,7 @@ export function Footer() {
 
           {/* Integrations Column */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Integrations</h4>
+            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">{t("footer.integrations")}</h4>
             <ul className="space-y-3">
               {footerLinks.integrations.map((link) => (
                 <li key={link.label}>
@@ -133,7 +137,7 @@ export function Footer() {
 
           {/* Company Column */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Company</h4>
+            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">{t("footer.company")}</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -150,7 +154,7 @@ export function Footer() {
 
           {/* Legal Column */}
           <div>
-            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">Legal</h4>
+            <h4 className="font-semibold text-sm mb-4 text-primary-foreground">{t("footer.legal")}</h4>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
@@ -169,14 +173,14 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-primary-foreground/50 text-xs text-center md:text-left">
-            Built for teams that run mission-critical AI automations
+            {t("trust_metrics.trusted_by")}
           </p>
           <div className="flex items-center gap-6 text-xs text-primary-foreground/50">
             <span>GDPR Compliant</span>
             <span>•</span>
-            <span>99.9% Uptime SLA</span>
+            <span>99.9% {t("trust_metrics.uptime")} SLA</span>
             <span>•</span>
-            <span>24/7 Operations</span>
+            <span>24/7 {t("trust_metrics.operations")}</span>
           </div>
         </div>
       </div>
