@@ -73,7 +73,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
-            className="fixed inset-0 z-50 bg-foreground/20 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-[100] bg-foreground/20 backdrop-blur-sm lg:hidden"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -85,7 +85,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
             animate={{ x: 0 }}
             exit={shouldReduceMotion ? { x: 0 } : { x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-sm bg-background border-l border-border shadow-2xl lg:hidden flex flex-col"
+            className="fixed top-0 right-0 bottom-0 z-[100] w-full max-w-sm bg-card border-l border-border shadow-2xl lg:hidden flex flex-col"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
