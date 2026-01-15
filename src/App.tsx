@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { ScrollToHash } from "@/components/shared/ScrollToHash";
 import Index from "./pages/Index";
 import Model from "./pages/Model";
@@ -41,6 +42,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToHash offset={96} />
+        <Analytics />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/model" element={<Model />} />
