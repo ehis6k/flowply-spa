@@ -148,14 +148,6 @@ npm run build
 # Output will be in the `dist/` directory
 ```
 
-**Recommended Deployment Platforms:**
-
-- Vercel
-- Netlify
-- GitHub Pages
-- AWS S3 + CloudFront
-- Any static hosting service
-
 The build output is a standard static site with no server-side requirements.
 
 ## Folder Structure
@@ -188,13 +180,9 @@ flowply-visualizer/
 
 ## Roadmap / TODO
 
-- [ ] Add unit and integration tests
-- [ ] Integrate production analytics service (replace console logging)
-- [ ] Update Open Graph images with FlowPly branding
 - [ ] Add more language translations
 - [ ] Implement dark mode toggle
 - [ ] Add performance monitoring
-- [ ] Set up CI/CD pipeline for automated deployments
 
 ## License
 
